@@ -1,16 +1,16 @@
 package de.tschuehly.fullstackdemo.web.page.tableExample
 
-import de.tschuehly.fullstackdemo.web.component.person.table.PersonTableViewComponent
+import de.tschuehly.fullstackdemo.web.component.scene.table.SceneTableViewComponent
 import de.tschuehly.spring.viewcomponent.core.component.ViewComponent
 import de.tschuehly.spring.viewcomponent.core.toProperty
 import de.tschuehly.spring.viewcomponent.thymeleaf.ViewContext
 
 @ViewComponent
 class TableExampleViewComponent(
-    private val personTableViewComponent: PersonTableViewComponent
+    private val sceneTableViewComponent: SceneTableViewComponent
 ) {
     fun render() = ViewContext(
-        "personTableViewComponent" toProperty personTableViewComponent.render()
+        "sceneTableViewComponent" toProperty sceneTableViewComponent.render()
 
     )
 }

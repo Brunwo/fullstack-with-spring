@@ -1,9 +1,9 @@
-package de.tschuehly.fullstackdemo.core.person
+package de.tschuehly.fullstackdemo.core.scene
 
 import java.time.LocalDate
 
 
-class Person(
+class Scene(
     var id: Int?,
     val firstName: String,
     val lastName: String,
@@ -12,7 +12,6 @@ class Person(
     val birthDate: LocalDate
 ) {
 
-    fun getPersonAsList() = listOf(id.toString(),firstName, lastName, phoneNumber, email, birthDate.toString())
-
+    fun getSceneAsList() = listOf(id.toString(),firstName, lastName, phoneNumber, email, birthDate.toString())
 }
 

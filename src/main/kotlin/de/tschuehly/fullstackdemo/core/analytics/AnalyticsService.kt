@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
+// could plug to openTelemetry / is this covered by actuator ?
 @Service
 class AnalyticsService {
     private val analyticsData = mutableMapOf<String,MutableList<AnalyticDataPoint>>()

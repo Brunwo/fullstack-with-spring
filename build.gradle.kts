@@ -10,7 +10,7 @@ plugins {
 
 group = "de.tschuehly"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_17
+java.sourceCompatibility = JavaVersion.VERSION_21
 
 repositories {
     mavenCentral()
@@ -39,7 +39,7 @@ dependencies {
 
     implementation("de.tschuehly:spring-view-component-thymeleaf:0.6.1-SNAPSHOT")
 
-//    implementation("de.tschuehly:supabase-security-spring-boot-starter:0.2.5-SNAPSHOT")
+    implementation("de.tschuehly:supabase-security-spring-boot-starter:0.2.5-SNAPSHOT")
 
 
     implementation("org.webjars.npm:htmx.org:1.9.2")
@@ -49,7 +49,7 @@ dependencies {
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = "17"
+        jvmTarget = "18"
     }
 }
 

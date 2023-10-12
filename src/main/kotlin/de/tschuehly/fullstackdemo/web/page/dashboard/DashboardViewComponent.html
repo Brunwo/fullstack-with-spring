@@ -30,8 +30,16 @@
 
     <div class="w-full mt-12">
         <p class="text-xl pb-3 flex items-center">
-            <i class="fas fa-list mr-3"></i> Latest Person submissons.
+            <i class="fas fa-list mr-3"></i> Latest scene submissons.
         </p>
-        <div view:component="${personTableVC}"></div>
+        <div view:component="${sceneTableVC}"></div>
     </div>
+
+    <script>
+        if (window.location.hash.startsWith("#access_token")) {
+            htmx.ajax('POST', '/api/user/jwt', {target: '#body', swap: 'outerHTML'})
+                .then(window.location.hash = "")
+        }
+    </script>
+
 </main>

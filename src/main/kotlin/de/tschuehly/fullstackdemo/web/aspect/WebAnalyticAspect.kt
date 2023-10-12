@@ -29,6 +29,8 @@ class WebAnalyticAspect(
 //
 //    }
 
+
+    // ok this trace timings inside ViewComponent
     @Around(
         "execution(* render(..)) && " +
                 "@within(de.tschuehly.spring.viewcomponent.core.component.ViewComponent)"

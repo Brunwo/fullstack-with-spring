@@ -2,10 +2,10 @@ package de.tschuehly.fullstackdemo.common
 
 class ApiConfig {
 
-    class Person{
+    class scene{
 
         companion object {
-            const val put = "/api/person"
+            const val put = "/api/scene"
         }
     }
 }
