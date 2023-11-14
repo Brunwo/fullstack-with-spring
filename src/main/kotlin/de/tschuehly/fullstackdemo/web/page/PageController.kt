@@ -10,8 +10,10 @@ import de.tschuehly.fullstackdemo.web.page.login.LoginViewComponent
 import de.tschuehly.fullstackdemo.web.page.register.RegisterViewComponent
 import de.tschuehly.fullstackdemo.web.page.tabbed.TabbedViewComponent
 import de.tschuehly.fullstackdemo.web.page.tableExample.TableExampleViewComponent
+import de.tschuehly.fullstackdemo.web.page.upload.UploadComponent
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
 
 @Controller
 class PageController(
@@ -22,7 +24,8 @@ class PageController(
     private val formViewComponent: FormViewComponent,
     private val layoutViewComponent: LayoutViewComponent,
     private val loginViewComponent: LoginViewComponent,
-    private val registerViewComponent: RegisterViewComponent
+    private val registerViewComponent: RegisterViewComponent,
+    private val uploadComponent: UploadComponent
 ) {
     @GetMapping(SidebarViewComponent.dashboardHref)
     fun home() = layoutViewComponent.render(
@@ -65,6 +68,12 @@ class PageController(
         null,
         registerViewComponent.render()
     )
+
+    @GetMapping("/upload")
+    fun uploadPage() {
+         uploadComponent.render();
+    }
+
 }
 
 

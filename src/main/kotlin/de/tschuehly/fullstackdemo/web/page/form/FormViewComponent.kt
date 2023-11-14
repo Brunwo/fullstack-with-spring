@@ -6,10 +6,13 @@ import de.tschuehly.spring.viewcomponent.core.toProperty
 import de.tschuehly.spring.viewcomponent.thymeleaf.ViewContext
 
 @ViewComponent
-class FormViewComponent(
-    private val sceneFormViewComponent: SceneFormViewComponent
-) {
-    fun render() = ViewContext(
-        "sceneFormViewComponent" toProperty sceneFormViewComponent.render()
-    )
+ class FormViewComponent(
+     val sceneFormViewComponent: SceneFormViewComponent
+)  {
+    fun render() = FormView()
+//sceneFormViewComponent.render()
+
+
+    //testing copilot
+class FormView : ViewContext
 }

@@ -16,8 +16,7 @@ class DashboardViewComponent(
     private val chartViewComponent: ChartViewComponent,
     private val sceneTableViewComponent: SceneTableViewComponent
 ) {
-    fun render() = ViewContext(
-        "requestChartVC" toProperty chartViewComponent.render(
+    fun render() = DashboardView(chartViewComponent.render(
             ChartViewComponent.ChartDetails(
                 "bar",
                 400, 200,
@@ -25,10 +24,15 @@ class DashboardViewComponent(
                 analyticsService.getLabelList(),
                 analyticsService.getRequestCountList()
             )
-        ),
-        "renderTimeLabelList" toProperty analyticsService.getLabelList(),
-        "sceneTableVC" toProperty sceneTableViewComponent.render()
+        ), analyticsService.getLabelList(),
+        sceneTableViewComponent.render()
     )
 
+    data class DashboardView(
+        val requestChartVC: ChartViewComponent.ChartDetails,
+        val renderTimeLabelList: List<String>,
+        //val sceneTableVC: SceneTableViewComponent.SceneTableView
+        val sceneTableVC: ViewContext
+    ) : ViewContext
 
 }

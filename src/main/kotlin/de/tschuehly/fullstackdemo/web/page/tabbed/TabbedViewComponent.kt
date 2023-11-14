@@ -7,12 +7,14 @@ import de.tschuehly.spring.viewcomponent.core.toProperty
 import de.tschuehly.spring.viewcomponent.thymeleaf.ViewContext
 
 @ViewComponent
-class TabbedViewComponent(
+data class TabbedViewComponent(
     private val alpineTabViewComponent: AlpineTabViewComponent,
     private val preactTabViewComponent: PreactTabViewComponent
-) {
-    fun render() = ViewContext(
-        "alpineTabViewComponent" toProperty alpineTabViewComponent.render(
+) :ViewContext {
+
+    fun render() =
+        TabbedView(
+            alpineTabViewComponent.render(
             listOf(
                 AlpineTabViewComponent.Tab(
                     "AlpineTab1",
@@ -24,8 +26,12 @@ class TabbedViewComponent(
                     "At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. "
                 ),
             )
+        ),preactTabViewComponent.render())
 
-        ),
-        "preactTabViewComponent" toProperty preactTabViewComponent.render()
-    )
+
+
+    data class TabbedView(
+        val alpineTabViewComponent: ViewContext,
+        val preactTabViewComponent: ViewContext
+    ) : ViewContext
 }

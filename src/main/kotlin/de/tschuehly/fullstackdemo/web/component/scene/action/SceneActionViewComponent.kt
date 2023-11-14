@@ -12,9 +12,8 @@ import java.time.LocalDate
 class SceneActionViewComponent(
     private val sceneService: SceneService
 ) {
-    fun render(sceneId: Int? = null) = ViewContext(
-        "scene" toProperty getscene(sceneId)
-    )
+    fun render(sceneId: Int? = null) = getscene(sceneId)
+
 
     fun getscene(sceneId: Int?): sceneFormDTO {
         if (sceneId != null) {
@@ -30,14 +29,14 @@ class SceneActionViewComponent(
     }
 
 
-    class sceneFormDTO(
+    data class sceneFormDTO(
         val id: Int?,
         val firstName: String,
         val lastName: String,
         val phoneNumber: String,
         val email: String,
         val birthDate: LocalDate
-    ) {
+    ) : ViewContext {
 
         constructor(scene: Scene) : this(
             scene.id,

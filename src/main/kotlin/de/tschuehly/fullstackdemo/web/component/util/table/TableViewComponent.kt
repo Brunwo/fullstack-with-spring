@@ -6,14 +6,10 @@ import de.tschuehly.spring.viewcomponent.core.toProperty
 
 @ViewComponent
 class TableViewComponent {
-    fun render(table: Table) = ViewContext(
-        "headerList" toProperty table.headerList,
-        "tableData" toProperty table.data
-    )
-
-    class Table(
+    fun render(table: Table) = table
+    data class Table(
         val headerList: List<String>,
-        val data: List<List<String>>
+        val tableData: List<List<String>>
 
-    )
+    ) : ViewContext
 }

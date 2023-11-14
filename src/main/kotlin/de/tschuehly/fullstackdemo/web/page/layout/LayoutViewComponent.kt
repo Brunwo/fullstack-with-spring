@@ -8,16 +8,23 @@ import de.tschuehly.spring.viewcomponent.thymeleaf.ViewContext
 
 @ViewComponent
 class LayoutViewComponent(
-    private val sidebarViewComponent: SidebarViewComponent,
+  //  private val sidebarViewComponent: SidebarViewComponent,
     private val headerViewComponent: HeaderViewComponent
 ) {
 
     fun render(
         activeTab: SidebarViewComponent.ActiveTab?,
         nestedViewComponent: ViewContext
-    ) = ViewContext(
-        "sidebarViewComponent" toProperty sidebarViewComponent.render(activeTab),
-        "headerViewComponent" toProperty headerViewComponent.render(activeTab),
-        "nestedViewComponent" toProperty nestedViewComponent
+    ) = LayoutView(
+   // sidebarViewComponent.render(activeTab),
+        headerViewComponent.render(activeTab),
+        nestedViewComponent
     )
+    data class  LayoutView(
+//        val sidebarViewComponent: SidebarViewComponent.SidebarView,
+    //   val sidebarViewComponent: ViewContext,
+
+        val headerViewComponent: HeaderViewComponent.HeaderView,
+        val nestedViewComponent: ViewContext
+    ) : ViewContext
 }

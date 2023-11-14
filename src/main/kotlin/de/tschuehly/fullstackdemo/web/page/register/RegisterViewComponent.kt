@@ -5,6 +5,5 @@ import de.tschuehly.spring.viewcomponent.thymeleaf.ViewContext
 
 @ViewComponent
 class RegisterViewComponent {
-    fun render() = ViewContext(
-    )
+    fun render() = object : ViewContext {}
 }

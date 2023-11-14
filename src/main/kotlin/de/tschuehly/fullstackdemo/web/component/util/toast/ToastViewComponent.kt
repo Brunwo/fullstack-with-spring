@@ -6,8 +6,13 @@ import de.tschuehly.spring.viewcomponent.core.toProperty
 
 @ViewComponent
 class ToastViewComponent {
-    fun render(message: String, durationMs: Int) = ViewContext(
-        "message" toProperty message,
-        "duration" toProperty durationMs
+    fun render(message: String, durationMs: Int) = ToastView(
+        message,
+        durationMs
     )
+
+    data class ToastView(
+        val message: String,
+        val duration: Int
+    ) : ViewContext
 }

@@ -6,10 +6,10 @@ import de.tschuehly.spring.viewcomponent.core.toProperty
 import de.tschuehly.spring.viewcomponent.thymeleaf.ViewContext
 
 @ViewComponent
-class CalendarViewComponent(
+data class CalendarViewComponent(
     private val eventModalViewComponent: EventModalViewComponent
-){
-    fun render() = ViewContext(
-        "eventModalViewComponent" toProperty eventModalViewComponent.render()
-    )
+) : ViewContext {
+    fun render() =  eventModalViewComponent.render()
 }
+
+// add a functionality  that removes the need to write render function when ViewComponent is used

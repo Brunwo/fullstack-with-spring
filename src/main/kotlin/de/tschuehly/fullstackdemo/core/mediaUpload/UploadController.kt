@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping
 @Service
 class UploadController {
 
-
-    @PostMapping("api/upload")
+    @PostMapping("/upload")
     fun upload() {
 
     }

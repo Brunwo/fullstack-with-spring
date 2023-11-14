@@ -7,13 +7,16 @@ import de.tschuehly.spring.viewcomponent.core.toProperty
 import de.tschuehly.spring.viewcomponent.thymeleaf.ViewContext
 
 @ViewComponent
-class AnalyticsChartViewComponent(
-    private val analyticsService: AnalyticsService,
-    private val chartViewComponent: ChartViewComponent
-) {
-    fun render(name: String) = ViewContext(
-        "chartViewComponent" toProperty chartViewComponent.render(
-            ChartViewComponent.ChartDetails(
+data class AnalyticsChartViewComponent(
+     val analyticsService: AnalyticsService,
+     val chartViewComponent: ChartViewComponent
+) : ViewContext {
+
+//fun render(nestedViewComponent: ViewContext) = LayoutView(nestedViewComponent)
+
+    fun render(name: String) =
+       chartViewComponent.render(
+              ChartViewComponent.ChartDetails(
                 "line",
                 400,
                 200,
@@ -21,6 +24,5 @@ class AnalyticsChartViewComponent(
                 analyticsService.getTimeStampsFor(name),
                 analyticsService.getComputeTimesFor(name)
             )
-        )
-    )
+          )
 }

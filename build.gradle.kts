@@ -27,7 +27,6 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
     implementation("org.thymeleaf.extras:thymeleaf-extras-java8time:3.0.4.RELEASE")
-
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -37,9 +36,13 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    implementation("de.tschuehly:spring-view-component-thymeleaf:0.6.1-SNAPSHOT")
+    //implementation("de.tschuehly:spring-view-component-thymeleaf:0.6.1-SNAPSHOT")
+    implementation("de.tschuehly:spring-view-component-thymeleaf:0.7.0")
 
     implementation("de.tschuehly:supabase-security-spring-boot-starter:0.2.5-SNAPSHOT")
+
+
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
 
     implementation("org.webjars.npm:htmx.org:1.9.2")

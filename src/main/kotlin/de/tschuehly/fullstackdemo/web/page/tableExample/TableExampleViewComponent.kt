@@ -6,11 +6,8 @@ import de.tschuehly.spring.viewcomponent.core.toProperty
 import de.tschuehly.spring.viewcomponent.thymeleaf.ViewContext
 
 @ViewComponent
-class TableExampleViewComponent(
+data class TableExampleViewComponent(
     private val sceneTableViewComponent: SceneTableViewComponent
-) {
-    fun render() = ViewContext(
-        "sceneTableViewComponent" toProperty sceneTableViewComponent.render()
-
-    )
+) : ViewContext {
+    fun render() =  object : ViewContext {}
 }

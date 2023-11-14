@@ -6,9 +6,6 @@ import de.tschuehly.spring.viewcomponent.thymeleaf.ViewContext
 
 @ViewComponent
 class ModalViewComponent {
-
-    fun render(embeddedComponent: ViewContext) =
-        ViewContext(
-            "embeddedComponent" toProperty embeddedComponent
-        )
+    fun render(embeddedComponent: ViewContext) =   ModalView(embeddedComponent)
+    data class ModalView(val embeddedComponent: ViewContext) : ViewContext
 }

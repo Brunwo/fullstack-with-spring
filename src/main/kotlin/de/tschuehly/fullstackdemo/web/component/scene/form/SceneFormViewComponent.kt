@@ -3,6 +3,7 @@ package de.tschuehly.fullstackdemo.web.component.scene.form
 import de.tschuehly.fullstackdemo.common.ApiConfig
 import de.tschuehly.fullstackdemo.core.scene.Scene
 import de.tschuehly.fullstackdemo.core.scene.SceneService
+import de.tschuehly.spring.viewcomponent.core.ViewProperty
 import de.tschuehly.spring.viewcomponent.core.component.ViewComponent
 import de.tschuehly.spring.viewcomponent.thymeleaf.ViewContext
 import de.tschuehly.spring.viewcomponent.core.toProperty
@@ -12,26 +13,28 @@ import java.time.LocalDate
 class SceneFormViewComponent(
     private val sceneService: SceneService
 ) {
-    fun render(sceneId: Int? = null) = ViewContext(
-        "scenePost" toProperty ApiConfig.scene.put,
-        "scene" toProperty getscene(sceneId)
-    )
+    fun render(sceneId: Int? = null) =  getscene(sceneId)
 
     fun getscene(sceneId: Int?): sceneFormDTO {
         if (sceneId != null) {
             sceneService.getscene(sceneId).also { return sceneFormDTO(it) }
         }
-        return sceneFormDTO(null,"", "", "", "", LocalDate.now())
+        return sceneFormDTO(null, "", "", "", "", LocalDate.now())
     }
 
-    class sceneFormDTO(
+//    data class scene  :ViewContext {
+//        scene =
+//    }
+
+    // scene View ?
+   data class sceneFormDTO(
         val id: Int?,
         val firstName: String,
         val lastName: String,
         val phoneNumber: String,
         val email: String,
         val birthDate: LocalDate
-    ) {
+    ) : ViewContext {
 
         constructor(scene: Scene) : this(
             scene.id,

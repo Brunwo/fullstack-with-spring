@@ -5,6 +5,6 @@ import de.tschuehly.spring.viewcomponent.thymeleaf.ViewContext
 
 @ViewComponent
 class LoginViewComponent {
-    fun render() = ViewContext(
-    )
+    fun render() = object : ViewContext {}
+
 }

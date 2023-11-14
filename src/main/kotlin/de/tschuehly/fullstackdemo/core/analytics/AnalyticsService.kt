@@ -7,24 +7,27 @@ import java.time.format.DateTimeFormatter
 // could plug to openTelemetry / is this covered by actuator ?
 @Service
 class AnalyticsService {
-    private val analyticsData = mutableMapOf<String,MutableList<AnalyticDataPoint>>()
-    fun saveAnalyticsDataFor(name: String, dataPointList: MutableList<AnalyticDataPoint>){
+    private val analyticsData = mutableMapOf<String, MutableList<AnalyticDataPoint>>()
+    fun saveAnalyticsDataFor(name: String, dataPointList: MutableList<AnalyticDataPoint>) {
         analyticsData[name] = dataPointList
     }
 
     fun getAnalyticsData() = analyticsData
-    fun getAnalyticsDataFor(name: String) = analyticsData[name]?: mutableListOf()
+    fun getAnalyticsDataFor(name: String) = analyticsData[name] ?: mutableListOf()
 
 
     fun getLabelList() = analyticsData.map {
-            it.key
-        }
-    fun getRequestCountList() = analyticsData.map {
-        if(it.value.isEmpty()) 0 else it.value.last().requestCount
+        it.key
     }
+
+    fun getRequestCountList() = analyticsData.map {
+        if (it.value.isEmpty()) 0 else it.value.last().requestCount
+    }
+
     fun getTimeStampsFor(name: String) = analyticsData[name]?.map {
         it.time.format(DateTimeFormatter.ofPattern("MM-dd HH:mm:ss"))
     } ?: listOf()
+
     fun getComputeTimesFor(name: String) = analyticsData[name]?.map {
         it.computeTime
     } ?: listOf()

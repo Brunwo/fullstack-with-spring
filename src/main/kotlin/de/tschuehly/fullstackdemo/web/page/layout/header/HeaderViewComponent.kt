@@ -10,8 +10,13 @@ import de.tschuehly.spring.viewcomponent.thymeleaf.ViewContext
 class HeaderViewComponent(
 ) {
     fun render(activeTab: SidebarViewComponent.ActiveTab?) =
-        ViewContext(
-            "activeTab" toProperty activeTab,
-            "tabs" toProperty SidebarViewComponent.ActiveTab.values()
+        HeaderView(
+            activeTab,
+            SidebarViewComponent.ActiveTab.values()
         )
+
+    data class HeaderView(
+        val activeTab: SidebarViewComponent.ActiveTab?,
+        val tabs: Array<SidebarViewComponent.ActiveTab>
+    ) : ViewContext
 }
